@@ -73,24 +73,24 @@ public class SpringBatchConfig {
         return writer;
     }
 
-    @Bean
-    Step step1(org.springframework.batch.core.job.builder.JobBuilder jobBuilder, org.springframework.batch.core.step.builder.StepBuilder stepBuilder) {
-        return stepBuilder.get("csv-step")
-                .<Customer, Customer>chunk(10)
-                .reader(reader())
-                .processor(processor())
-                .writer(writer())
-                .taskExecutor(taskExecutor())
-                .build();
-    }
-
-    @Bean
-    Job runJob(org.springframework.batch.core.job.builder.JobBuilder jobBuilder) {
-        return jobBuilder.get("importCustomers")
-                .flow(step1(null, null)) 
-                .end()
-                .build();
-    }
+//    @Bean
+//    Step step1(org.springframework.batch.core.job.builder.JobBuilder jobBuilder, org.springframework.batch.core.step.builder.StepBuilder stepBuilder) {
+//        return stepBuilder.get("csv-step")
+//                .<Customer, Customer>chunk(10)
+//                .reader(reader())
+//                .processor(processor())
+//                .writer(writer())
+//                .taskExecutor(taskExecutor())
+//                .build();
+//    }
+//
+//    @Bean
+//    Job runJob(org.springframework.batch.core.job.builder.JobBuilder jobBuilder) {
+//        return jobBuilder.get("importCustomers")
+//                .flow(step1(null, null)) 
+//                .end()
+//                .build();
+//    }
 
     @Bean
     TaskExecutor taskExecutor() {
