@@ -1,5 +1,8 @@
 package com.gowri.tech.utils;
 
+import java.util.Optional;
+import java.util.function.Function;
+
 /**
  * Utility class for string operations.
  * 
@@ -123,4 +126,10 @@ public class StringUtils {
         }
         return str.substring(0, 1).toLowerCase()+ str.substring(1);
     }
+    
+ // In your StringUtils class
+    public static <T> Optional<T> safeTransform(String str, Function<String, T> transformer) {
+        return Optional.ofNullable(str).map(transformer);
+    }
+    
 }
