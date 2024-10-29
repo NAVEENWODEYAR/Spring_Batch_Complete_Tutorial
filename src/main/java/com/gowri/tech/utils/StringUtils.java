@@ -116,4 +116,11 @@ public class StringUtils {
     public static boolean stringCompare(String s1, String s2) {
         return (s1 == null ? s2 == null : s1.equals(s2));
     }
+    
+    public static String lowecase(String str) {
+        if (isNullOrEmpty(str)) {
+            return str;
+        }
+        return str.substring(0, 1).toLowerCase()+ str.substring(1);
+    }
 }
