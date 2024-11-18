@@ -1,10 +1,8 @@
 package com.gowri.tech.service.Impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.gowri.tech.entity.EmployeesTable;
 import com.gowri.tech.repo.EmployeesTableRepository;
 import com.gowri.tech.service.EmployeeService;
@@ -26,7 +24,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Override
 	public void saveEmpLoyee(EmployeesTable request) {
-		log.info("employee save()");
+		log.info("Save() started: {}",System.currentTimeMillis());
 		employeesTableRepository.save(request);
 	}
 
