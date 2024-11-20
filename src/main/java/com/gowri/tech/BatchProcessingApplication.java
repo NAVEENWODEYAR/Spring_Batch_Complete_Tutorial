@@ -26,6 +26,7 @@ public class BatchProcessingApplication {
         // Manually adding a timestamp to the log message
         String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 
+        logger.info("[{}] ***************************************", timestamp);
         logger.info("[{}] Application Name: {}", timestamp, appName);
         logger.info("[{}] Port Number: {}", timestamp, port);
         logger.info("[{}] Active Profiles: {}", timestamp, activeProfiles.isEmpty() ? "None" : activeProfiles);
