@@ -23,7 +23,6 @@ public class BatchProcessingApplication {
         var port = env.getProperty("server.port", "8080");
         var activeProfiles = String.join(", ", env.getActiveProfiles());
 
-        // Manually adding a timestamp to the log message
         String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
 
         logger.info("[{}] ***************************************", timestamp);
