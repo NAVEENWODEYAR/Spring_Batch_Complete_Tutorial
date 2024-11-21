@@ -19,4 +19,8 @@ public class Colleges {
 	private Integer cId;
 	
 	private String cName;
+	
+	private String cCode;
+	
+	private String Address;
 }
