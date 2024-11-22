@@ -1,7 +1,6 @@
 package com.gowri.tech.entity;
 
 import java.util.Objects;
-
 import jakarta.persistence.*;
 
 /**

@@ -7,7 +7,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.5</version>
-		<relativePath /> 
+		<relativePath />
 	</parent>
 	<groupId>com.gowri.tech</groupId>
 	<artifactId>Batch_Processing</artifactId>
@@ -74,6 +74,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.10.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
