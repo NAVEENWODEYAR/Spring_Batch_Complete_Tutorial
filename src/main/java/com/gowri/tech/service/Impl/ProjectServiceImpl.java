@@ -18,19 +18,16 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public void saveProducts() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public List<Projects> getProducts() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Projects getProduct() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
