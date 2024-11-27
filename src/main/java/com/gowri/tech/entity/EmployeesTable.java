@@ -1,7 +1,12 @@
 package com.gowri.tech.entity;
 
 import java.util.*;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * @author -NaveenWodeyar
@@ -16,12 +21,24 @@ public class EmployeesTable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer empId;
 	
+	@NotNull(message = "Employee name cannot be null")  
+    @Min(value = 100000, message = "Pin must be at least 6 digits")  
+    @JsonProperty("EMPLOYEE_NAME") 
 	private String empName;
 	
+	@NotNull(message = "Address cannot be null")  
+    @Min(value = 100000, message = "Pin must be at least 6 digits")  
+    @JsonProperty("EMPLOYEE_ROLE") 
 	private String empRole;
 	
+	@NotNull(message = "Address cannot be null")  
+    @Min(value = 100000, message = "Pin must be at least 6 digits")  
+    @JsonProperty("EMPLOYEE_DEPARTMENT") 
 	private String empDept;
 	
+	@NotNull(message = "Address cannot be null")  
+    @Min(value = 100000, message = "Pin must be at least 6 digits")  
+    @JsonProperty("EMPLOYEE_MAIL") 
 	private String empMail;
 	
 	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)

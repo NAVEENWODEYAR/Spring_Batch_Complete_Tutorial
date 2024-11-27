@@ -2,7 +2,12 @@ package com.gowri.tech.entity;
 
 import java.util.*;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * @author -NaveenWodeyar
@@ -17,10 +22,19 @@ public class Projects {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer projectId;
 	
+	@NotNull(message = "Project name cannot be null")  
+    @Min(value = 100000, message = "Pin must be at least 6 digits")  
+    @JsonProperty("PROJECT_NAME") 
 	private String projectName;
 	
+	@NotNull(message = "Project Lead cannot be null")  
+    @Min(value = 100000, message = "Pin must be at least 6 digits")  
+    @JsonProperty("PROJECT_LEAD") 
 	private String pojectLead;
 	
+	@NotNull(message = "Project type cannot be null")  
+    @Min(value = 100000, message = "Pin must be at least 6 digits")  
+    @JsonProperty("PROJECT_TYPE") 
 	private String projectType;
 	
 	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
