@@ -12,6 +12,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 /**
  * @author -NaveenWodeyar
@@ -26,10 +28,15 @@ public class Students {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer stId;
 	
+	@NotNull(message = "City can't be empty")
+	@Size(min = 5,max = 50,message = "Should be between 2-50 characters")
 	private String stName;
 	
+	@NotNull(message = "City can't be empty")
+	@Size(min = 10,max = 100,message = "Should be between 2-50 characters")
 	private String stMail;
 	
+	@NotNull(message = "City can't be empty")
 	private String stClass;
 	
 	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)

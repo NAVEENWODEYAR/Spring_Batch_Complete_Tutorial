@@ -22,22 +22,18 @@ public class EmployeesTable {
 	private Integer empId;
 	
 	@NotNull(message = "Employee name cannot be null")  
-    @Min(value = 100000, message = "Pin must be at least 6 digits")  
     @JsonProperty("EMPLOYEE_NAME") 
 	private String empName;
 	
-	@NotNull(message = "Address cannot be null")  
-    @Min(value = 100000, message = "Pin must be at least 6 digits")  
+	@NotNull(message = "Employee Role cannot be null")  
     @JsonProperty("EMPLOYEE_ROLE") 
 	private String empRole;
 	
-	@NotNull(message = "Address cannot be null")  
-    @Min(value = 100000, message = "Pin must be at least 6 digits")  
+	@NotNull(message = "Employee Department cannot be null")  
     @JsonProperty("EMPLOYEE_DEPARTMENT") 
 	private String empDept;
 	
-	@NotNull(message = "Address cannot be null")  
-    @Min(value = 100000, message = "Pin must be at least 6 digits")  
+	@NotNull(message = "Employee Mail cannot be null")  
     @JsonProperty("EMPLOYEE_MAIL") 
 	private String empMail;
 	

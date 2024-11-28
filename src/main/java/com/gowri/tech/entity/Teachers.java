@@ -11,6 +11,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.AssertFalse.List;
 
 /**
@@ -26,12 +28,19 @@ public class Teachers {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer thId;
 	
+	@NotNull(message = "Teacher name can't be empty")
+	@Size(min = 3,max = 50,message = "Should be between 2-50 characters")
 	private String thName;
 	
+	@NotNull(message = "Teacher mail can't be empty")
 	private String thMail;
 	
+	@NotNull(message = "Teacher subject can't be empty")
+	@Size(min = 4,max = 50,message = "Should be between 2-50 characters")
 	private String thSubjet;
 	
+	@NotNull(message = "Teacher address can't be empty")
+	@Size(min = 4,max = 50,message = "Should be between 2-50 characters")
 	private String thAddress;
 	
 	@ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)

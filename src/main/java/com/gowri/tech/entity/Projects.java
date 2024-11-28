@@ -23,17 +23,14 @@ public class Projects {
 	private Integer projectId;
 	
 	@NotNull(message = "Project name cannot be null")  
-    @Min(value = 100000, message = "Pin must be at least 6 digits")  
     @JsonProperty("PROJECT_NAME") 
 	private String projectName;
 	
 	@NotNull(message = "Project Lead cannot be null")  
-    @Min(value = 100000, message = "Pin must be at least 6 digits")  
     @JsonProperty("PROJECT_LEAD") 
 	private String pojectLead;
 	
 	@NotNull(message = "Project type cannot be null")  
-    @Min(value = 100000, message = "Pin must be at least 6 digits")  
     @JsonProperty("PROJECT_TYPE") 
 	private String projectType;
 	

@@ -23,17 +23,14 @@ public class Colleges {
 	private Integer cId;
 	
 	@NotNull(message = "College name cannot be null")  
-    @Min(value = 100000, message = "Pin must be at least 6 digits")  
     @JsonProperty("COLLEGE_NAME") 
 	private String cName;
 	
 	@NotNull(message = "College code cannot be null")  
-    @Min(value = 100000, message = "Pin must be at least 6 digits")  
     @JsonProperty("COLLEGE_CODE") 
 	private String cCode;
 	
 	@NotNull(message = "Address cannot be null")  
-    @Min(value = 100000, message = "Pin must be at least 6 digits")  
     @JsonProperty("ADDRESS") 
 	private String Address;
 }
