@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: batch-processing-v1-deployment
+  namespace: backend-service
+spec:
+  replicas: 2  # Number of pod replicas to run
+  selector:
+    matchLabels:
+      app: batch-processing-v1
+  template:
+    metadata:
+      labels:
+        app: batch-processing-v1
+    spec:
+      containers:
+        - name: batch-processing-v1
+          image: <your-docker-image>  # Specify your container image here
+          ports:
+            - containerPort: 8080     # Container port where your app runs

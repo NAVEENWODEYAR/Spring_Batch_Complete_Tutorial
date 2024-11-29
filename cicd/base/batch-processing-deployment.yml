@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels: 
+    app: batch-processing-v1
+  name: batch-processing-v1-service
+  namespace: backend-service
+spec:
+  selector:
+    app: batch-processing-v1
+  ports:
+    - protocol: TCP
+      port: 80      # Port exposed on the service
+      targetPort: 8080  # Port on the container where the app is running
+  type: ClusterIP  # The service type (could also be LoadBalancer, NodePort, etc.)
