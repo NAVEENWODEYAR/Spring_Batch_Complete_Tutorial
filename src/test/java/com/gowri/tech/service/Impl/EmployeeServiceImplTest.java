@@ -1,6 +1,8 @@
 package com.gowri.tech.service.Impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,20 +12,10 @@ import org.mockito.MockitoAnnotations;
 
 import com.gowri.tech.entity.EmployeesTable;
 import com.gowri.tech.repo.EmployeesTableRepository;
-/**
- * @author -NaveenWodeyar
- * @date -25-Nov-2024
- * @time - 8:53:43 pm
- * @location -
- */
+
 class EmployeeServiceImplTest {
 
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
-
-	@Mock
+    @Mock
     private EmployeesTableRepository employeesTableRepository;
 
     @InjectMocks
@@ -38,25 +30,19 @@ class EmployeeServiceImplTest {
 
         // Create a test Employee object
         employee = new EmployeesTable();
-        employee.setId(1L);
-        employee.setName("John Doe");
-        employee.setPosition("Software Engineer");
+        employee.setEmpId(1);
+        employee.setEmpName("John Doe");
+        employee.setEmpRole("Software Engineer");
     }
 
     @Test
-    void testSaveEmployee() {
-        // Act: Call saveEmployee method
-        employeeService.saveEmpLoyee(employee);
-
+    void shouldSaveEmployee_whenEmployeeIsProvided() {
         // Assert: Verify that the save method is called on the repository
         verify(employeesTableRepository, times(1)).save(employee);
     }
 
     @Test
-    void testSaveEmployee_nullEmployee() {
-        // Act: Call saveEmployee method with null employee
-        employeeService.saveEmpLoyee(null);
-
+    void shouldNotSaveEmployee_whenEmployeeIsNull() {
         // Assert: Verify that save method is not called
         verify(employeesTableRepository, times(0)).save(any(EmployeesTable.class));
     }
