@@ -1,6 +1,8 @@
 package com.gowri.tech.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import com.gowri.tech.entity.Customer;
 
 /**
@@ -10,6 +12,7 @@ import com.gowri.tech.entity.Customer;
  * @location -
  */
 
+@Repository
 public interface Customerrepository extends JpaRepository<Customer, Integer> {
 
 }

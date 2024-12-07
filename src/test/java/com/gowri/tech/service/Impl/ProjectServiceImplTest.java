@@ -5,10 +5,9 @@ package com.gowri.tech.service.Impl;
  * @time - 11:50:19 pm
  * @location -
  */
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -17,12 +16,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 import com.gowri.tech.entity.Projects;
-import com.gowri.tech.service.ProjectService;
+import com.gowri.tech.repo.ProjectsRepo;
 
 class ProjectServiceImplTest {
 
     @Mock
-    private ProjectsRepository projectsRepository;
+    private ProjectsRepo projectsRepository;
 
     @InjectMocks
     private ProjectServiceImpl projectService;
@@ -33,9 +32,9 @@ class ProjectServiceImplTest {
     void setUp() {
         // Create a sample project for testing
         project = new Projects();
-        project.setId(1L);
-        project.setName("Project A");
-        project.setDescription("Description of Project A");
+        project.setProjectId(1);
+        project.setProjectName("Project A");
+        project.setProjectType("Description of Project A");
     }
 
     @Test
