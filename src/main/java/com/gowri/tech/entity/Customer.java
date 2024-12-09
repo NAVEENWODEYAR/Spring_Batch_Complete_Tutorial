@@ -1,6 +1,9 @@
 package com.gowri.tech.entity;
 
 import java.util.Objects;
+
+import com.google.gson.annotations.SerializedName;
+
 import jakarta.persistence.*;
 
 /**
@@ -16,27 +19,35 @@ public class Customer {
 	
 	@Id
 	@Column(name = "CUSTOMER_ID")
+	@SerializedName("CUSTOMER_ID")
 	private Integer id;
 	
 	@Column(name = "FIRST_NAME")
+	@SerializedName("CUSTOMER_FIRST_NAME")
 	private String firstName;
 	
 	@Column(name = "LAST_NAME")
+	@SerializedName("CUSTOMER_LAST_NAME")
 	private String lastName;
 	
 	@Column(name = "EMAIL")
+	@SerializedName("CUSTOMER_EMAIL")
 	private String email;
 	
 	@Column(name = "GENDER")
+	@SerializedName("CUSTOMER_GENDER")
 	private String gender;
 	
 	@Column(name = "CONTACT")
+	@SerializedName("CUSTOMER_MOBILE")
 	private String contactNo;
 	
 	@Column(name = "COUNTRY")
+	@SerializedName("CUSTOMER_COUNTRY")
 	private String country;
 	
 	@Column(name = "DOB")
+	@SerializedName("CUSTOMER_DOB")
 	private String dob;
 	
 	public Customer() {}
