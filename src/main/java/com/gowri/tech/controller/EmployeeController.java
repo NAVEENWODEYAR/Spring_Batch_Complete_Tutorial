@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/api/v1/emp")
 public class EmployeeController {
-	
+	//Employee controller to manage employee data
 	private static final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 	
 	@Autowired
