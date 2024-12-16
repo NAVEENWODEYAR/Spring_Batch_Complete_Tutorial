@@ -37,4 +37,5 @@ public class Colleges {
     @JsonProperty("ADDRESS")
 	@SerializedName("COLLEGE_ADDRESS")
 	private String Address;
+	
 }
