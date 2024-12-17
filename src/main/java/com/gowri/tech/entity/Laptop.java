@@ -2,7 +2,10 @@ package com.gowri.tech.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 /**
  * @author -NaveenWodeyar
@@ -17,16 +20,33 @@ public class Laptop {
 	@Id
 	private String lapId;
 	
+	@NotNull(message = "Name can't be empty")
+	@Size(min = 5,max = 50,message = "Should be between 2-50 characters")
 	private String lapName;
 	
+	@NotNull(message = "Brand can't be empty")
+	@Size(min = 5,max = 50,message = "Should be between 2-50 characters")
 	private String lapBrand;
 	
+	@NotNull(message = "Make can't be empty")
+	@Size(min = 5,max = 50,message = "Should be between 2-50 characters")
 	private String lapMake;
 	
+	@NotNull(message = "Price can't be empty")
+	@Size(min = 5,max = 50,message = "Should be between 2-50 characters")
 	private String lapPrice;
 	
+	@NotNull(message = "Rating can't be empty")
+	@Size(min = 5,max = 50,message = "Should be between 2-50 characters")
 	private String lapRating;
 	
+	@NotNull(message = "Vidyarthi can't be empty")
+	@Size(min = 5,max = 50,message = "Should be between 2-50 characters")
+	@OneToOne
+	private Vidyarthi vidyarthi;
+	
+	@NotNull(message = "Laptop can't be empty")
+	@Size(min = 5,max = 50,message = "Should be between 2-50 characters")
 	public Laptop() {}
 
 	/**

@@ -1,11 +1,9 @@
 package com.gowri.tech.entity;
 
 import java.util.Objects;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 /**
  * @author -NaveenWodeyar
@@ -20,11 +18,15 @@ public class Vidyarthi {
 	@Id
 	private String vId;
 	
+	@NotNull(message = "Name can't be empty")
+	@Size(min = 5,max = 50,message = "Should be between 2-50 characters")
 	private String vName;
 	
+	@NotNull(message = "Class can't be empty")
+	@Size(min = 5,max = 50,message = "Should be between 2-50 characters")
 	private String vClass;
 	
-	@OneToOne
+	@OneToOne 
 	private Laptop laptop;
 	
 	public Vidyarthi() {}
