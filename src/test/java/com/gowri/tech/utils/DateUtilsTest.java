@@ -26,7 +26,7 @@ public class DateUtilsTest {
         String dateStr = "2024-12-21";
         Date parsedDate = DateUtils.parseDate(dateStr, "yyyy-MM-dd");
         assertNotNull(parsedDate);
-        assertEquals("2024-12-21", DateUtils.formatDate(parsedDate, "yyyy-MM-dd")); // Ensure parsing is correct
+        assertEquals("2024-12-21", DateUtils.formatDate(parsedDate, "yyyy-MM-dd")); 
     }
 
     @Test
@@ -34,7 +34,7 @@ public class DateUtilsTest {
         Date startDate = DateUtils.parseDate("2024-12-20", "yyyy-MM-dd");
         Date endDate = DateUtils.parseDate("2024-12-21", "yyyy-MM-dd");
         long days = DateUtils.daysBetween(startDate, endDate);
-        assertEquals(1, days); // 2024-12-21 - 2024-12-20 = 1 day
+        assertEquals(1, days); 
     }
 
     @Test
@@ -42,7 +42,7 @@ public class DateUtilsTest {
         Date currentDate = new Date();
         Date futureDate = DateUtils.addDays(currentDate, 5);
         assertNotNull(futureDate);
-        assertTrue(futureDate.after(currentDate)); // The future date should be after the current date
+        assertTrue(futureDate.after(currentDate));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class DateUtilsTest {
         Date currentDate = new Date();
         Date pastDate = DateUtils.subtractDays(currentDate, 5);
         assertNotNull(pastDate);
-        assertTrue(pastDate.before(currentDate)); // The past date should be before the current date
+        assertTrue(pastDate.before(currentDate)); 
     }
 
     @Test
@@ -68,7 +68,7 @@ public class DateUtilsTest {
     public void testGetCurrentDateString() {
         String currentDateString = DateUtils.getCurrentDateString("yyyy-MM-dd HH:mm:ss");
         assertNotNull(currentDateString);
-        assertTrue(currentDateString.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}")); // Ensure the format is correct
+        assertTrue(currentDateString.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}")); 
     }
 
     @Test
