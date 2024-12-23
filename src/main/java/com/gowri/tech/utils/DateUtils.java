@@ -17,7 +17,7 @@ public class DateUtils {
     // Format a Date into a String (using DateTimeFormatter for thread-safety)
     public static String formatDate(Date date, String format) {
         if (date == null) {
-            return "";  // or return null, based on your preference
+            return ""; 
         }
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         return sdf.format(date);
@@ -34,7 +34,7 @@ public class DateUtils {
 
     // Get the current date
     public static Date getCurrentDate() {
-        return new Date(); // Java 17 still uses java.util.Date for current time.
+        return new Date(); 
     }
 
     // Get the current date as a String in a specific format
@@ -72,7 +72,7 @@ public class DateUtils {
     // Convert Date to LocalDate (useful for Spring Data JPA, etc.)
     public static LocalDate toLocalDate(Date date) {
         if (date == null) {
-            return null;  // or throw an exception, based on your preference
+            return null; 
         }
         return LocalDate.ofInstant(date.toInstant(), java.time.ZoneId.systemDefault());
     }
@@ -80,7 +80,7 @@ public class DateUtils {
     // Convert LocalDate to Date (useful for Spring Data JPA, etc.)
     public static Date fromLocalDate(LocalDate localDate) {
         if (localDate == null) {
-            return null;  // or throw an exception, based on your preference
+            return null; 
         }
         return java.util.Date.from(localDate.atStartOfDay(java.time.ZoneId.systemDefault()).toInstant());
     }
@@ -99,7 +99,7 @@ public class DateUtils {
     // Convert LocalDateTime to Date (for legacy use with APIs that require java.util.Date)
     public static Date fromLocalDateTime(LocalDateTime localDateTime) {
         if (localDateTime == null) {
-            return null;  // or throw an exception
+            return null;  
         }
         return java.util.Date.from(localDateTime.atZone(java.time.ZoneId.systemDefault()).toInstant());
     }
@@ -107,7 +107,7 @@ public class DateUtils {
     // Convert Date to LocalDateTime (for legacy use with APIs that require java.util.Date)
     public static LocalDateTime toLocalDateTime(Date date) {
         if (date == null) {
-            return null;  // or throw an exception
+            return null;  
         }
         return LocalDateTime.ofInstant(date.toInstant(), java.time.ZoneId.systemDefault());
     }
