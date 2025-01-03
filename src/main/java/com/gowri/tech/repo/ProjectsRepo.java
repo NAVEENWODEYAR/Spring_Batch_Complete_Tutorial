@@ -8,8 +8,9 @@ package com.gowri.tech.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import com.gowri.tech.entity.Projects;
 
 @Repository
-public interface ProjectsRepo extends JpaRepository<ProjectsRepo, Integer> {
+public interface ProjectsRepo extends JpaRepository<Projects, Integer> {
 
 }

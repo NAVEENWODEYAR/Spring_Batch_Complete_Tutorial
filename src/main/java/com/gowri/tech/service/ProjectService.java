@@ -15,8 +15,8 @@ import com.gowri.tech.entity.Projects;
 @Service
 public interface ProjectService {
 
-	public void saveProducts();
+	public void saveProducts(Projects project);
 	public List<Projects> getProducts();
-	public Projects getProduct();
+	public Projects getProduct(Integer pId);
 
 }

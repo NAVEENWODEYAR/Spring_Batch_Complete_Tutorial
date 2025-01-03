@@ -2,9 +2,11 @@ package com.gowri.tech.service.Impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gowri.tech.entity.Projects;
+import com.gowri.tech.repo.ProjectsRepo;
 import com.gowri.tech.service.ProjectService;
 
 /**
@@ -15,20 +17,23 @@ import com.gowri.tech.service.ProjectService;
  */
 @Service
 public class ProjectServiceImpl implements ProjectService {
+	
+	@Autowired
+	private ProjectsRepo projectsRepo;
 
 	@Override
-	public void saveProducts() {
-		
+	public void saveProducts(Projects project) {
+		 projectsRepo.save(project);
 	}
 
 	@Override
 	public List<Projects> getProducts() {
-		return null;
+		return projectsRepo.findAll();
 	}
 
 	@Override
-	public Projects getProduct() {
-		return null;
+	public Projects getProduct(Integer pId) {
+		return projectsRepo.findById(pId).get();
 	}
 
 }
