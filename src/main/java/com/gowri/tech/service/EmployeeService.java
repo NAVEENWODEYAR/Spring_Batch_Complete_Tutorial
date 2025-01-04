@@ -1,5 +1,6 @@
 package com.gowri.tech.service;
 
+import java.util.List;
 import org.springframework.stereotype.Service;
 import com.gowri.tech.entity.EmployeesTable;
 /**
@@ -12,6 +13,12 @@ import com.gowri.tech.entity.EmployeesTable;
 public interface EmployeeService {
 
 	public void saveEmpLoyee(EmployeesTable employeesTable);
+	
+	public List<EmployeesTable> empList();
+	
+	public String deleteEmp(Integer empId);
+	
+	public EmployeesTable editEmp(EmployeesTable employee, Integer empId);
 	
 
 }

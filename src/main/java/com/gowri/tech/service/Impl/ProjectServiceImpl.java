@@ -1,10 +1,9 @@
 package com.gowri.tech.service.Impl;
 
 import java.util.List;
-
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.gowri.tech.entity.Projects;
 import com.gowri.tech.repo.ProjectsRepo;
 import com.gowri.tech.service.ProjectService;
@@ -40,7 +39,7 @@ public class ProjectServiceImpl implements ProjectService {
 	public Projects editProject(Projects project, Integer pId) {
 		if (projectsRepo.existsById(pId)) {
 			Projects projects = projectsRepo.findById(pId).orElseThrow();
-			
+			BeanUtils.copyProperties(project, projects);			
 			return projects;
 		}
 		return null;
