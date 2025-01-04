@@ -36,4 +36,14 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectsRepo.findById(pId).get();
 	}
 
+	@Override
+	public Projects editProject(Projects project, Integer pId) {
+		if (projectsRepo.existsById(pId)) {
+			Projects projects = projectsRepo.findById(pId).orElseThrow();
+			
+			return projects;
+		}
+		return null;
+	}
+
 }
