@@ -12,9 +12,17 @@ public class GsonService {
 
 	 private final Gson gson;
 
-	    // Constructor injection of Gson
 	    public GsonService() {
 	        this.gson = new Gson();
 	    }
 
+	    // Method to convert an object to JSON string
+	    public String toJson(Object obj) {
+	        return gson.toJson(obj);
+	    }
+
+	    // Method to convert a JSON string to an object of a given type
+	    public <T> T fromJson(String json, Class<T> classOfT) {
+	        return gson.fromJson(json, classOfT);
+	    }
 }

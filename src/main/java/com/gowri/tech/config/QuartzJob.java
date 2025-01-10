@@ -2,9 +2,7 @@ package com.gowri.tech.config;
 
 import java.time.LocalDateTime;
 import java.util.Date;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.context.annotation.Configuration;

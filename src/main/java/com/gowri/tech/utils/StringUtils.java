@@ -2,14 +2,15 @@ package com.gowri.tech.utils;
 
 import java.util.Optional;
 import java.util.function.Function;
+import org.springframework.stereotype.Component;
 
 /**
- * Utility class for string operations.
- * 
  * @author Naveen Wodeyar
  * @date 28-Oct-2024
  * @time 7:22:56 PM
  */
+
+@Component
 public class StringUtils {
 
     /**

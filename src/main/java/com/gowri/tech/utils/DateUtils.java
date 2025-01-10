@@ -1,17 +1,20 @@
 package com.gowri.tech.utils;
+
+import java.text.*;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import org.springframework.stereotype.Component;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+
 /**
  * @author -NaveenWodeyar
  * @date -21-Dec-2024
  * @time - 5:47:13 pm
  * @location -
  */
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-import java.time.*;
-import java.time.format.DateTimeFormatter;
 
+@Component
 public class DateUtils {
 
     // Format a Date into a String (using DateTimeFormatter for thread-safety)

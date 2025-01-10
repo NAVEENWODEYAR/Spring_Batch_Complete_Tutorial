@@ -1,12 +1,16 @@
 package com.gowri.tech.utils;
+
+import java.math.BigDecimal;
+import org.springframework.stereotype.Component;
+
 /**
  * @author -NaveenWodeyar
  * @date -23-Dec-2024
  * @time - 11:21:00 pm
  * @location -
  */
-import java.math.BigDecimal;
 
+@Component
 public class NumberUtil {
 
     // Check if a number is prime

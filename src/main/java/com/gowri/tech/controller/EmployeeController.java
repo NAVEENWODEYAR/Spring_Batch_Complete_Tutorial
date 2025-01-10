@@ -1,18 +1,14 @@
 package com.gowri.tech.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.gowri.tech.entity.EmployeesTable;
 import com.gowri.tech.service.Impl.EmployeeServiceImpl;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
 
 /**
  * @author -NaveenWodeyar
@@ -20,10 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @time - 8:04:29 pm
  * @location -
  */
+
 @RestController
 @RequestMapping("/api/v1/emp")
 public class EmployeeController {
-	//Employee controller to manage employee data
+
 	private static final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 	
 	@Autowired
@@ -40,5 +37,4 @@ public class EmployeeController {
 		return "Employee persisted into db";
 	}
 	
-
 }

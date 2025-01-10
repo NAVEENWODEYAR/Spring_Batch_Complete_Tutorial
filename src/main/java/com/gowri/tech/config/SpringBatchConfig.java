@@ -14,9 +14,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
-
 import com.gowri.tech.entity.Customer;
 import com.gowri.tech.repo.Customerrepository;
+
+/**
+ * @author -NaveenWodeyar
+ * @date -10-Jan-2025
+ * @time - 10:01:09 pm
+ * @location -
+ */
 
 @Configuration
 @EnableBatchProcessing
@@ -71,24 +77,17 @@ public class SpringBatchConfig {
         return writer;
     }
 
-//    @Bean
-//    Step step1(org.springframework.batch.core.job.builder.JobBuilder jobBuilder, org.springframework.batch.core.step.builder.StepBuilder stepBuilder) {
-//        return stepBuilder.get("csv-step")
-//                .<Customer, Customer>chunk(10)
-//                .reader(reader())
-//                .processor(processor())
-//                .writer(writer())
-//                .taskExecutor(taskExecutor())
-//                .build();
-//    }
-//
-//    @Bean
-//    Job runJob(org.springframework.batch.core.job.builder.JobBuilder jobBuilder) {
-//        return jobBuilder.get("importCustomers")
-//                .flow(step1(null, null)) 
-//                .end()
-//                .build();
-//    }
+	/*
+	 * @Bean Step step1(org.springframework.batch.core.job.builder.JobBuilder
+	 * jobBuilder, org.springframework.batch.core.step.builder.StepBuilder
+	 * stepBuilder) { return stepBuilder.get("csv-step") .<Customer,
+	 * Customer>chunk(10) .reader(reader()) .processor(processor())
+	 * .writer(writer()) .taskExecutor(taskExecutor()) .build(); }
+	 * 
+	 * @Bean Job runJob(org.springframework.batch.core.job.builder.JobBuilder
+	 * jobBuilder) { return jobBuilder.get("importCustomers") .flow(step1(null,
+	 * null)) .end() .build(); }
+	 */
 
     @Bean
     TaskExecutor taskExecutor() {
