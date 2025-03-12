@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -31,88 +32,88 @@ import org.mockito.MockitoAnnotations;
 
 class FileWriterJobTest {
 	
+	@Mock
+    private Connection mockConnection;
 
-	    @Mock
-	    private Connection mockConnection;
+    @Mock
+    private Statement mockStatement;
 
-	    @Mock
-	    private Statement mockStatement;
+    @Mock
+    private ResultSet mockResultSet;
 
-	    @Mock
-	    private ResultSet mockResultSet;
+    @Mock
+    private FileWriter mockFileWriter;
 
-	    @Mock
-	    private FileWriter mockFileWriter;
+    @Mock
+    private CSVPrinter mockCsvPrinter;
 
-	    @Mock
-	    private CSVPrinter mockCsvPrinter;
+    @InjectMocks
+    private FileWriterJob fileWriterJob;
 
-	    @InjectMocks
-	    private FileWriterJob fileWriterJob;
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
-	    @BeforeEach
-	    void setUp() {
-	        MockitoAnnotations.openMocks(this);
-	    }
+    @Test
+    void testWriteDataToCSV_successful() throws SQLException, IOException {
+        // Arrange: Setup mocks to simulate database interaction
+        when(mockConnection.createStatement()).thenReturn(mockStatement);
+        when(mockStatement.executeQuery(anyString())).thenReturn(mockResultSet);
+        when(mockResultSet.next()).thenReturn(true).thenReturn(false);  // Simulate one row of data
+        when(mockResultSet.getString("column1")).thenReturn("data1");
+        when(mockResultSet.getString("column2")).thenReturn("data2");
+        when(mockResultSet.getString("column3")).thenReturn("data3");
 
-	    @Test
-	    void testWriteDataToCSV_successful() throws SQLException, IOException {
-	        // Arrange: Setup mocks to simulate database interaction
-	        when(mockConnection.createStatement()).thenReturn(mockStatement);
-	        when(mockStatement.executeQuery(anyString())).thenReturn(mockResultSet);
-	        when(mockResultSet.next()).thenReturn(true).thenReturn(false);  // Simulate one row of data
-	        when(mockResultSet.getString("column1")).thenReturn("data1");
-	        when(mockResultSet.getString("column2")).thenReturn("data2");
-	        when(mockResultSet.getString("column3")).thenReturn("data3");
-	        
-	        // Create a mock for CSVPrinter's printRecord method
-	        doNothing().when(mockCsvPrinter).printRecord(anyString(), anyString(), anyString());
-	        
-	        // Act: Call the method we are testing
-	        fileWriterJob.writeDataToCSV();
+        // Setup the mock for the void method 'printRecord' using doNothing()
+        doNothing().when(mockCsvPrinter).printRecord(anyString(), anyString(), anyString());
+        
+        // Setup the mock for the void method 'flush' using doNothing()
+        doNothing().when(mockCsvPrinter).flush();
+        
+        // Act: Call the method we are testing
+        fileWriterJob.writeDataToCSV();
 
-	        // Assert: Verify the correct interactions
-	        verify(mockCsvPrinter).printRecord("data1", "data2", "data3");
-	        verify(mockCsvPrinter).flush();
-	        verify(mockCsvPrinter, times(1)).flush();
-	        System.out.println("Test passed successfully for writing data to CSV.");
-	    }
+        // Assert: Verify the correct interactions
+        verify(mockCsvPrinter).printRecord("data1", "data2", "data3");
+        verify(mockCsvPrinter).flush();
+        verify(mockCsvPrinter, times(1)).flush();
+        System.out.println("Test passed successfully for writing data to CSV.");
+    }
 
-	    @Test
-	    void testWriteDataToCSV_sqlException() throws SQLException {
-	        // Arrange: Setup mocks to simulate a SQLException
-	        when(mockConnection.createStatement()).thenReturn(mockStatement);
-	        when(mockStatement.executeQuery(anyString())).thenThrow(new SQLException("Database error"));
+    @Test
+    void testWriteDataToCSV_sqlException() throws SQLException {
+        // Arrange: Setup mocks to simulate a SQLException
+        when(mockConnection.createStatement()).thenReturn(mockStatement);
+        when(mockStatement.executeQuery(anyString())).thenThrow(new SQLException("Database error"));
 
-	        // Act and Assert: Test exception handling
-	        Exception exception = assertThrows(SQLException.class, () -> {
-	            fileWriterJob.writeDataToCSV();
-	        });
+        // Act and Assert: Test exception handling
+        Exception exception = assertThrows(SQLException.class, () -> {
+            fileWriterJob.writeDataToCSV();
+        });
 
-	        assertEquals("Database error", exception.getMessage());
-	    }
+        assertEquals("Database error", exception.getMessage());
+    }
 
-	    @Test
-	    void testWriteDataToCSV_ioException() throws SQLException, IOException {
-	        // Arrange: Setup mocks to simulate an IOException
-	        when(mockConnection.createStatement()).thenReturn(mockStatement);
-	        when(mockStatement.executeQuery(anyString())).thenReturn(mockResultSet);
-	        when(mockResultSet.next()).thenReturn(true).thenReturn(false);
-	        when(mockResultSet.getString("column1")).thenReturn("data1");
-	        when(mockResultSet.getString("column2")).thenReturn("data2");
-	        when(mockResultSet.getString("column3")).thenReturn("data3");
-	        
-	        // Simulate IOException during CSVPrinter initialization
-	        when(mockCsvPrinter.printRecord(anyString(), anyString(), anyString()))
-	                .thenThrow(new IOException("File writing error"));
+    @Test
+    void testWriteDataToCSV_ioException() throws SQLException, IOException {
+        // Arrange: Setup mocks to simulate an IOException
+        when(mockConnection.createStatement()).thenReturn(mockStatement);
+        when(mockStatement.executeQuery(anyString())).thenReturn(mockResultSet);
+        when(mockResultSet.next()).thenReturn(true).thenReturn(false);
+        when(mockResultSet.getString("column1")).thenReturn("data1");
+        when(mockResultSet.getString("column2")).thenReturn("data2");
+        when(mockResultSet.getString("column3")).thenReturn("data3");
 
-	        // Act and Assert: Test exception handling
-	        Exception exception = assertThrows(IOException.class, () -> {
-	            fileWriterJob.writeDataToCSV();
-	        });
+        // Simulate IOException during CSVPrinter initialization
+        doThrow(new IOException("File writing error")).when(mockCsvPrinter).printRecord(anyString(), anyString(), anyString());
 
-	        assertEquals("File writing error", exception.getMessage());
-	    }
-	}
+        // Act and Assert: Test exception handling
+        Exception exception = assertThrows(IOException.class, () -> {
+            fileWriterJob.writeDataToCSV();
+        });
+
+        assertEquals("File writing error", exception.getMessage());
+    }
 
 }
