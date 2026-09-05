@@ -31,14 +31,14 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	@Transactional
 	public void saveProducts(Projects project) {
-		log.info("save");
+		log.info("save/persist operation");
 		 projectsRepo.save(project);
 	}
 
 	@Override
 	@Transactional
 	public List<Projects> getProducts() {
-		log.info("findAll");
+		log.info("findAll/fech student records");
 		return projectsRepo.findAll();
 	}
 
